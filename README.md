@@ -45,6 +45,12 @@ await camera.zoom('in', false); // Stop zooming
 // Focus control
 await camera.focus('far', true, 3); // Start focusing far at speed 3
 await camera.focus('far', false); // Stop focusing
+
+// Get streaming URLs
+const rtspUrl = await camera.getRTSPUrl('main');
+const webrtcUrl = await camera.getWebRTCUrl('sub');
+console.log('RTSP Stream:', rtspUrl);
+console.log('WebRTC Stream:', webrtcUrl);
 ```
 
 ## API Reference
@@ -276,6 +282,22 @@ await camera.setBacklightCompensation(enabled: boolean): Promise<boolean>
 await camera.getBacklightCompensation(): Promise<boolean>
 ```
 
+### Streaming URLs
+
+Get streaming URLs for various protocols. The camera supports both main and sub streams:
+
+```typescript
+await camera.getRTSPUrl(type?: 'main' | 'sub'): Promise<string>
+await camera.getRTMPUrl(type?: 'main' | 'sub'): Promise<string>
+await camera.getFLVUrl(type?: 'main' | 'sub'): Promise<string>
+await camera.getWebRTCUrl(type?: 'main' | 'sub'): Promise<string>
+```
+
+**Stream Types:**
+
+-   `'main'` - High quality stream (default) - 1920×1080 up to 60fps
+-   `'sub'` - Lower quality stream - Various resolutions up to 1280×720
+
 ## Complete Usage Example
 
 ```typescript
@@ -293,6 +315,16 @@ async function main() {
 	// Wait for authentication
 	await camera.whenReady();
 	console.log('Camera ready!');
+
+	// Get streaming URLs for integration
+	const streams = {
+		rtsp: await camera.getRTSPUrl('main'),
+		rtmp: await camera.getRTMPUrl('main'),
+		webrtc: await camera.getWebRTCUrl('main'),
+		flv: await camera.getFLVUrl('sub'), // Sub stream for lower bandwidth
+	};
+
+	console.log('Available streams:', streams);
 
 	// Configure camera settings
 	await camera.setExposureMode('auto');

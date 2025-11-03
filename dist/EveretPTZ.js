@@ -942,6 +942,82 @@ var EveretPTZ = /** @class */ (function () {
             });
         });
     };
+    EveretPTZ.prototype.getRTSPUrl = function (type) {
+        var _a, _b;
+        if (type === void 0) { type = 'main'; }
+        return __awaiter(this, void 0, void 0, function () {
+            var body, response;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        body = {
+                            venc: { main: type === 'main', sub: type === 'sub' },
+                        };
+                        return [4 /*yield*/, this.request('get', body)];
+                    case 1:
+                        response = _c.sent();
+                        return [2 /*return*/, (_b = (_a = response === null || response === void 0 ? void 0 : response.venc) === null || _a === void 0 ? void 0 : _a[type]) === null || _b === void 0 ? void 0 : _b.rtspUrl];
+                }
+            });
+        });
+    };
+    EveretPTZ.prototype.getRTMPUrl = function (type) {
+        var _a, _b;
+        if (type === void 0) { type = 'main'; }
+        return __awaiter(this, void 0, void 0, function () {
+            var body, response;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        body = {
+                            venc: { main: type === 'main', sub: type === 'sub' },
+                        };
+                        return [4 /*yield*/, this.request('get', body)];
+                    case 1:
+                        response = _c.sent();
+                        return [2 /*return*/, (_b = (_a = response === null || response === void 0 ? void 0 : response.venc) === null || _a === void 0 ? void 0 : _a[type]) === null || _b === void 0 ? void 0 : _b.rtmpUrl];
+                }
+            });
+        });
+    };
+    EveretPTZ.prototype.getFLVUrl = function (type) {
+        var _a, _b;
+        if (type === void 0) { type = 'main'; }
+        return __awaiter(this, void 0, void 0, function () {
+            var body, response;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        body = {
+                            venc: { main: type === 'main', sub: type === 'sub' },
+                        };
+                        return [4 /*yield*/, this.request('get', body)];
+                    case 1:
+                        response = _c.sent();
+                        return [2 /*return*/, (_b = (_a = response === null || response === void 0 ? void 0 : response.venc) === null || _a === void 0 ? void 0 : _a[type]) === null || _b === void 0 ? void 0 : _b.httpFlvUrl];
+                }
+            });
+        });
+    };
+    EveretPTZ.prototype.getWebRTCUrl = function (type) {
+        var _a, _b;
+        if (type === void 0) { type = 'main'; }
+        return __awaiter(this, void 0, void 0, function () {
+            var body, response;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        body = {
+                            venc: { main: type === 'main', sub: type === 'sub' },
+                        };
+                        return [4 /*yield*/, this.request('get', body)];
+                    case 1:
+                        response = _c.sent();
+                        return [2 /*return*/, (_b = (_a = response === null || response === void 0 ? void 0 : response.venc) === null || _a === void 0 ? void 0 : _a[type]) === null || _b === void 0 ? void 0 : _b.webRtcUrl];
+                }
+            });
+        });
+    };
     EveretPTZ.prototype.throwError = function (error) {
         if (typeof this._onError === 'function')
             return this._onError(error);

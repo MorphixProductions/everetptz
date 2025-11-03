@@ -461,6 +461,38 @@ export class EveretPTZ {
 		) as keyof typeof NOISEREDUCTION3D_MODE;
 	}
 
+	async getRTSPUrl(type: 'main' | 'sub' = 'main'): Promise<string> {
+		const body = {
+			venc: { main: type === 'main', sub: type === 'sub' },
+		};
+		const response = await this.request('get', body);
+		return response?.venc?.[type]?.rtspUrl;
+	}
+
+	async getRTMPUrl(type: 'main' | 'sub' = 'main'): Promise<string> {
+		const body = {
+			venc: { main: type === 'main', sub: type === 'sub' },
+		};
+		const response = await this.request('get', body);
+		return response?.venc?.[type]?.rtmpUrl;
+	}
+
+	async getFLVUrl(type: 'main' | 'sub' = 'main'): Promise<string> {
+		const body = {
+			venc: { main: type === 'main', sub: type === 'sub' },
+		};
+		const response = await this.request('get', body);
+		return response?.venc?.[type]?.httpFlvUrl;
+	}
+
+	async getWebRTCUrl(type: 'main' | 'sub' = 'main'): Promise<string> {
+		const body = {
+			venc: { main: type === 'main', sub: type === 'sub' },
+		};
+		const response = await this.request('get', body);
+		return response?.venc?.[type]?.webRtcUrl;
+	}
+
 	private throwError(error: Error) {
 		if (typeof this._onError === 'function') return this._onError(error);
 		throw error;

@@ -11,25 +11,32 @@ async function main() {
 
 	await ptz.whenReady();
 
-	var mirror: boolean = false;
+	const rtsp = await ptz.getRTSPUrl();
+	const rtmp = await ptz.getRTMPUrl();
+	const flv = await ptz.getFLVUrl();
+	const webrtc = await ptz.getWebRTCUrl();
 
-	ptz.setFlip(false);
-	var b = 0;
-	var c = 0;
-	setInterval(() => {
-		// if (c == 5) {
-		// 	ptz.setMirror(mirror);
-		// 	mirror = !mirror;
-		// 	c = 0;
-		// } else c++;
+	console.log({ rtsp, rtmp, flv, webrtc });
 
-		b++;
+	// var mirror: boolean = false;
 
-		if (b > 255) b = 0;
-		else b += 10;
+	// ptz.setFlip(false);
+	// var b = 0;
+	// var c = 0;
+	// setInterval(() => {
+	// 	// if (c == 5) {
+	// 	// 	ptz.setMirror(mirror);
+	// 	// 	mirror = !mirror;
+	// 	// 	c = 0;
+	// 	// } else c++;
 
-		ptz.setBlueGain(b as any);
-	}, 100);
+	// 	b++;
+
+	// 	if (b > 255) b = 0;
+	// 	else b += 10;
+
+	// 	ptz.setBlueGain(b as any);
+	// }, 100);
 
 	// const saturation = await ptz.getSaturation();
 	// console.log('Current saturation:', saturation);

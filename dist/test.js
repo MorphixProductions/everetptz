@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var EveretPTZ_1 = require("./EveretPTZ");
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var ptz, mirror, b, c;
+        var ptz, rtsp, rtmp, flv, webrtc;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -50,23 +50,19 @@ function main() {
                     return [4 /*yield*/, ptz.whenReady()];
                 case 1:
                     _a.sent();
-                    mirror = false;
-                    ptz.setFlip(false);
-                    b = 0;
-                    c = 0;
-                    setInterval(function () {
-                        // if (c == 5) {
-                        // 	ptz.setMirror(mirror);
-                        // 	mirror = !mirror;
-                        // 	c = 0;
-                        // } else c++;
-                        b++;
-                        if (b > 255)
-                            b = 0;
-                        else
-                            b += 10;
-                        ptz.setBlueGain(b);
-                    }, 100);
+                    return [4 /*yield*/, ptz.getRTSPUrl()];
+                case 2:
+                    rtsp = _a.sent();
+                    return [4 /*yield*/, ptz.getRTMPUrl()];
+                case 3:
+                    rtmp = _a.sent();
+                    return [4 /*yield*/, ptz.getFLVUrl()];
+                case 4:
+                    flv = _a.sent();
+                    return [4 /*yield*/, ptz.getWebRTCUrl()];
+                case 5:
+                    webrtc = _a.sent();
+                    console.log({ rtsp: rtsp, rtmp: rtmp, flv: flv, webrtc: webrtc });
                     return [2 /*return*/];
             }
         });

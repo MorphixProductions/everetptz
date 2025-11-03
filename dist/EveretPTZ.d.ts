@@ -52,6 +52,10 @@ export declare class EveretPTZ {
     get2dNoiseReduction(): Promise<boolean>;
     set3dNoiseReduction(mode: keyof typeof NOISEREDUCTION3D_MODE): Promise<boolean>;
     get3dNoiseReduction(): Promise<keyof typeof NOISEREDUCTION3D_MODE>;
+    getRTSPUrl(type?: 'main' | 'sub'): Promise<string>;
+    getRTMPUrl(type?: 'main' | 'sub'): Promise<string>;
+    getFLVUrl(type?: 'main' | 'sub'): Promise<string>;
+    getWebRTCUrl(type?: 'main' | 'sub'): Promise<string>;
     private throwError;
     private _onError;
     onError(callback: (error: Error) => void): Promise<void>;
