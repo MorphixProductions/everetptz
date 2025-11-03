@@ -3,7 +3,7 @@ import { EveretPTZ } from './EveretPTZ';
 import { delay } from './utils';
 
 async function main() {
-	const ptz = new EveretPTZ('10.99.0.118', 'admin', '234Tgb999!');
+	const ptz = new EveretPTZ('10.99.0.118', 'admin', 'admin');
 
 	ptz.onError((error) => {
 		console.error('Error occurred:', error.message);
@@ -11,18 +11,20 @@ async function main() {
 
 	await ptz.whenReady();
 
-	const rtsp = await ptz.getRTSPUrl();
-	const rtmp = await ptz.getRTMPUrl();
-	const flv = await ptz.getFLVUrl();
-	const webrtc = await ptz.getWebRTCUrl();
+	await ptz.recallPreset(15);
 
-	console.log({ rtsp, rtmp, flv, webrtc });
+	// const rtsp = await ptz.getRTSPUrl();
+	// const rtmp = await ptz.getRTMPUrl();
+	// const flv = await ptz.getFLVUrl();
+	// const webrtc = await ptz.getWebRTCUrl();
+
+	// console.log({ rtsp, rtmp, flv, webrtc });
 
 	// var mirror: boolean = false;
 
-	// ptz.setFlip(false);
+	// // ptz.setFlip(false);
 	// var b = 0;
-	// var c = 0;
+	// // var c = 0;
 	// setInterval(() => {
 	// 	// if (c == 5) {
 	// 	// 	ptz.setMirror(mirror);
@@ -30,12 +32,20 @@ async function main() {
 	// 	// 	c = 0;
 	// 	// } else c++;
 
+	// 	ptz.setSaturation(10);
+
+	// 	ptz.setWhiteBalanceMode('manual');
+
 	// 	b++;
 
 	// 	if (b > 255) b = 0;
 	// 	else b += 10;
 
 	// 	ptz.setBlueGain(b as any);
+	// 	ptz.setRedGain(b as any);
+
+	// 	ptz.setMirror(mirror);
+	// 	mirror = !mirror;
 	// }, 100);
 
 	// const saturation = await ptz.getSaturation();

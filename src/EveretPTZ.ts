@@ -493,6 +493,22 @@ export class EveretPTZ {
 		return response?.venc?.[type]?.webRtcUrl;
 	}
 
+	async recallPreset(presetNumber: NumberRange<0, 127>) {
+		const body = {
+			image: { preset: { call: presetNumber } },
+		};
+		const response = await this.request('set', body);
+		return response?.preset?.preset === true;
+	}
+
+	async setPreset(presetNumber: NumberRange<0, 127>) {
+		const body = {
+			image: { preset: { add: presetNumber } },
+		};
+		const response = await this.request('set', body);
+		return response?.preset?.preset === true;
+	}
+
 	private throwError(error: Error) {
 		if (typeof this._onError === 'function') return this._onError(error);
 		throw error;

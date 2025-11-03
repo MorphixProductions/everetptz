@@ -39,30 +39,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var EveretPTZ_1 = require("./EveretPTZ");
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var ptz, rtsp, rtmp, flv, webrtc;
+        var ptz;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    ptz = new EveretPTZ_1.EveretPTZ('10.99.0.118', 'admin', '234Tgb999!');
+                    ptz = new EveretPTZ_1.EveretPTZ('10.99.0.118', 'admin', 'admin');
                     ptz.onError(function (error) {
                         console.error('Error occurred:', error.message);
                     });
                     return [4 /*yield*/, ptz.whenReady()];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, ptz.getRTSPUrl()];
+                    return [4 /*yield*/, ptz.recallPreset(15)];
                 case 2:
-                    rtsp = _a.sent();
-                    return [4 /*yield*/, ptz.getRTMPUrl()];
-                case 3:
-                    rtmp = _a.sent();
-                    return [4 /*yield*/, ptz.getFLVUrl()];
-                case 4:
-                    flv = _a.sent();
-                    return [4 /*yield*/, ptz.getWebRTCUrl()];
-                case 5:
-                    webrtc = _a.sent();
-                    console.log({ rtsp: rtsp, rtmp: rtmp, flv: flv, webrtc: webrtc });
+                    _a.sent();
                     return [2 /*return*/];
             }
         });

@@ -1,6 +1,6 @@
 {
     "name": "everetptz",
-    "version": "2025.11.2",
+    "version": "2025.11.3",
     "description": "Rest API wrapper for Everet PTZ cameras with 0 dependencies.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

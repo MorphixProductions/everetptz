@@ -56,6 +56,8 @@ export declare class EveretPTZ {
     getRTMPUrl(type?: 'main' | 'sub'): Promise<string>;
     getFLVUrl(type?: 'main' | 'sub'): Promise<string>;
     getWebRTCUrl(type?: 'main' | 'sub'): Promise<string>;
+    recallPreset(presetNumber: NumberRange<0, 127>): Promise<boolean>;
+    setPreset(presetNumber: NumberRange<0, 127>): Promise<boolean>;
     private throwError;
     private _onError;
     onError(callback: (error: Error) => void): Promise<void>;

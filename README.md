@@ -51,6 +51,10 @@ const rtspUrl = await camera.getRTSPUrl('main');
 const webrtcUrl = await camera.getWebRTCUrl('sub');
 console.log('RTSP Stream:', rtspUrl);
 console.log('WebRTC Stream:', webrtcUrl);
+
+// Save and recall camera positions
+await camera.setPreset(1); // Save current position as preset 1
+await camera.recallPreset(1); // Return to preset 1 position
 ```
 
 ## API Reference
@@ -298,6 +302,58 @@ await camera.getWebRTCUrl(type?: 'main' | 'sub'): Promise<string>
 -   `'main'` - High quality stream (default) - 1920×1080 up to 60fps
 -   `'sub'` - Lower quality stream - Various resolutions up to 1280×720
 
+## Preset Management
+
+Save and recall camera positions using preset slots. The camera supports 128 preset positions (0-127):
+
+```typescript
+await camera.setPreset(presetNumber: number): Promise<boolean>        // 0-127
+await camera.recallPreset(presetNumber: number): Promise<boolean>     // 0-127
+```
+
+**Examples:**
+
+```typescript
+// Move camera to desired position first
+await camera.move('right', true, 15);
+await new Promise((resolve) => setTimeout(resolve, 2000));
+await camera.move('right', false);
+
+await camera.zoom('in', true, 5);
+await new Promise((resolve) => setTimeout(resolve, 1000));
+await camera.zoom('in', false);
+
+// Save current position as preset 1
+const saved = await camera.setPreset(1);
+console.log('Preset 1 saved:', saved);
+
+// Move camera to different position
+await camera.move('left', true, 20);
+await new Promise((resolve) => setTimeout(resolve, 3000));
+await camera.move('left', false);
+
+// Recall preset 1 to return to saved position
+const recalled = await camera.recallPreset(1);
+console.log('Preset 1 recalled:', recalled);
+
+// Save multiple presets for different shots
+await camera.setPreset(10); // Wide shot
+await camera.setPreset(11); // Medium shot
+await camera.setPreset(12); // Close-up shot
+
+// Quick preset switching
+await camera.recallPreset(10); // Switch to wide shot
+await camera.recallPreset(12); // Switch to close-up
+```
+
+**Preset Features:**
+
+-   **128 Positions** - Slots 0-127 available
+-   **High Precision** - 0.1° accuracy as per camera specs
+-   **Persistent Storage** - Presets saved in camera memory
+-   **Instant Recall** - Fast positioning for live production
+-   **Pan/Tilt/Zoom** - Complete camera state is saved
+
 ## Complete Usage Example
 
 ```typescript
@@ -351,6 +407,19 @@ async function main() {
 	await camera.zoom('in', false);
 
 	console.log('Movement complete!');
+
+	// Save this position as preset 5
+	await camera.setPreset(5);
+	console.log('Position saved as preset 5');
+
+	// Move to different position
+	await camera.move('left', true, 20);
+	await new Promise((resolve) => setTimeout(resolve, 2000));
+	await camera.move('left', false);
+
+	// Recall saved preset
+	await camera.recallPreset(5);
+	console.log('Returned to preset 5 position');
 }
 
 main().catch(console.error);
