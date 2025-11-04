@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NOISEREDUCTION3D_MODE = exports.WIDEDYNAMICRANGE_MODE = exports.WHITEBALANCE_MODE = exports.ANTIFLICKER = exports.IRIS = exports.GAIN = exports.SHUTTER = exports.EXPOSURE_MODE = exports.FOCUS_MODE = exports.FOCUS_COMMAND = exports.ZOOM_COMMAND = exports.MOVE_COMMAND = void 0;
+exports.NOISEREDUCTION3D_MODE = exports.WIDEDYNAMICRANGE_MODE = exports.WHITEBALANCE_MODE = exports.ANTIFLICKER = exports.IRIS = exports.GAIN = exports.SHUTTER = exports.EXPOSURE_MODE = exports.FOCUS_MODE = exports.FOCUS_COMMAND = exports.ZOOM_COMMAND = exports.HOME_COMMAND = exports.MOVE_COMMAND = void 0;
 exports.MOVE_COMMAND = {
     up: {
         on: 1,
@@ -19,6 +19,7 @@ exports.MOVE_COMMAND = {
         off: 0,
     },
 };
+exports.HOME_COMMAND = 5;
 exports.ZOOM_COMMAND = {
     in: {
         on: 1,

@@ -42,21 +42,21 @@ if (password == null)
     throw new Error('Please provide the password as the first argument.');
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var ptz, info;
+        var ptz, home;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    ptz = new EveretPTZ_1.EveretPTZ('10.99.0.118', 'admin', password);
+                    ptz = new EveretPTZ_1.EveretPTZ('10.99.10.231', 'admin', password);
                     ptz.onError(function (error) {
                         console.error('Error occurred:', error.message);
                     });
                     return [4 /*yield*/, ptz.whenReady()];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, ptz.getInfo()];
+                    return [4 /*yield*/, ptz.home()];
                 case 2:
-                    info = _a.sent();
-                    console.log('Current info:', info);
+                    home = _a.sent();
+                    console.log('Homing command sent:', home);
                     return [2 /*return*/];
             }
         });

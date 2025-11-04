@@ -16,6 +16,7 @@ export declare const MOVE_COMMAND: {
         off: number;
     };
 };
+export declare const HOME_COMMAND = 5;
 export declare const ZOOM_COMMAND: {
     in: {
         on: number;

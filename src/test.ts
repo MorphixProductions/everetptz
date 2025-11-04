@@ -9,7 +9,7 @@ if (password == null)
 	throw new Error('Please provide the password as the first argument.');
 
 async function main() {
-	const ptz = new EveretPTZ('10.99.0.118', 'admin', password);
+	const ptz = new EveretPTZ('10.99.10.231', 'admin', password);
 
 	ptz.onError((error) => {
 		console.error('Error occurred:', error.message);
@@ -17,8 +17,11 @@ async function main() {
 
 	await ptz.whenReady();
 
-	const info = await ptz.getInfo();
-	console.log('Current info:', info);
+	const home = await ptz.home();
+	console.log('Homing command sent:', home);
+
+	// const info = await ptz.getInfo();
+	// console.log('Current info:', info);
 
 	// ptz.setWideDynamicRange('Off');
 

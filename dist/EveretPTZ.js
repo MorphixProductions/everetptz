@@ -88,6 +88,24 @@ var EveretPTZ = /** @class */ (function () {
             });
         });
     };
+    EveretPTZ.prototype.home = function () {
+        var _a;
+        return __awaiter(this, void 0, void 0, function () {
+            var body, response;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        body = {
+                            image: { ptz: [commands_1.HOME_COMMAND, 0] },
+                        };
+                        return [4 /*yield*/, this.request('set', body)];
+                    case 1:
+                        response = _b.sent();
+                        return [2 /*return*/, ((_a = response === null || response === void 0 ? void 0 : response.image) === null || _a === void 0 ? void 0 : _a.ptz) === true];
+                }
+            });
+        });
+    };
     EveretPTZ.prototype.move = function (side, active, speed) {
         var _a;
         if (speed === void 0) { speed = 10; }

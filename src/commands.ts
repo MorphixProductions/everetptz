@@ -17,6 +17,8 @@ export const MOVE_COMMAND = {
 	},
 };
 
+export const HOME_COMMAND = 5;
+
 export const ZOOM_COMMAND = {
 	in: {
 		on: 1,

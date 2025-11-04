@@ -4,6 +4,7 @@ import {
 	FOCUS_COMMAND,
 	FOCUS_MODE,
 	GAIN,
+	HOME_COMMAND,
 	IRIS,
 	MOVE_COMMAND,
 	NOISEREDUCTION3D_MODE,
@@ -48,6 +49,14 @@ export class EveretPTZ {
 		};
 		const response = await this.request('get', body);
 		return response?.system;
+	}
+
+	public async home() {
+		const body = {
+			image: { ptz: [HOME_COMMAND, 0] },
+		};
+		const response = await this.request('set', body);
+		return response?.image?.ptz === true;
 	}
 
 	public async move(

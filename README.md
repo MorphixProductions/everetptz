@@ -63,6 +63,7 @@ setTimeout(() => {
 
 ### [Movement](#movement)
 
+-   [home](#home)
 -   [move](#move)
 -   [zoom](#zoom-1)
 -   [focus](#focus-1)
@@ -196,6 +197,14 @@ await camera.getInfo(): Promise<{
 Get camera system information including firmware versions and device details.
 
 ## Movement
+
+### home
+
+```typescript
+await camera.home(): Promise<boolean>
+```
+
+Returns the camera to the home position.
 
 ### move
 
