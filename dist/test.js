@@ -42,7 +42,7 @@ if (password == null)
     throw new Error('Please provide the password as the first argument.');
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var ptz;
+        var ptz, info;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -53,7 +53,10 @@ function main() {
                     return [4 /*yield*/, ptz.whenReady()];
                 case 1:
                     _a.sent();
-                    ptz.setGamma(4);
+                    return [4 /*yield*/, ptz.getInfo()];
+                case 2:
+                    info = _a.sent();
+                    console.log('Current info:', info);
                     return [2 /*return*/];
             }
         });

@@ -59,6 +59,7 @@ setTimeout(() => {
 
 -   [whenReady](#whenready)
 -   [onError](#onerror)
+-   [getInfo](#getinfo)
 
 ### [Movement](#movement)
 
@@ -179,6 +180,20 @@ camera.onError(callback: (error: Error) => void): void
 ```
 
 Set error handler for authentication and request failures.
+
+### getInfo
+
+```typescript
+await camera.getInfo(): Promise<{
+	app_version: string;
+	bootloader_version: string;
+	device_name: string;
+	serial_number: string;
+	system_version: string;
+}>
+```
+
+Get camera system information including firmware versions and device details.
 
 ## Movement
 

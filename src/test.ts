@@ -17,7 +17,12 @@ async function main() {
 
 	await ptz.whenReady();
 
-	ptz.setGamma(4);
+	const info = await ptz.getInfo();
+	console.log('Current info:', info);
+
+	// ptz.setWideDynamicRange('Off');
+
+	// ptz.setGamma(4);
 	// const exposureMode = await ptz.getExposureMode();
 	// console.log('Current exposure mode:', exposureMode);
 

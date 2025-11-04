@@ -5,6 +5,13 @@ export declare class EveretPTZ {
     ready: boolean;
     token: string;
     constructor(ip: string, username: string, password: string);
+    getInfo(): Promise<{
+        app_version: string;
+        bootloader_version: string;
+        device_name: string;
+        serial_number: string;
+        system_version: string;
+    }>;
     move(side: keyof typeof MOVE_COMMAND, active: boolean, speed?: NumberRange<0, 24>): Promise<boolean>;
     zoom(direction: keyof typeof ZOOM_COMMAND, active: boolean, speed?: NumberRange<0, 7>): Promise<boolean>;
     focus(direction: keyof typeof FOCUS_COMMAND, active: boolean, speed?: NumberRange<0, 7>): Promise<boolean>;
