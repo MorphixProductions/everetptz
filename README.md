@@ -395,7 +395,7 @@ Set white balance mode.
 ### getWhiteBalanceMode
 
 ```typescript
-await camera.getWhiteBalanceMode(): Promise<string>
+await camera.getWhiteBalanceMode(): Promise<'auto' | 'indoor' | 'outdoor' | 'one push' | 'auto tracking' | 'manual' | 'temperature'>
 ```
 
 Get current white balance mode.
