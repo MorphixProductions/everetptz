@@ -498,7 +498,7 @@ export class EveretPTZ {
 			image: { preset: { call: presetNumber } },
 		};
 		const response = await this.request('set', body);
-		return response?.preset?.preset === true;
+		return response?.image?.preset === true;
 	}
 
 	async setPreset(presetNumber: NumberRange<0, 127>) {
@@ -506,7 +506,9 @@ export class EveretPTZ {
 			image: { preset: { add: presetNumber } },
 		};
 		const response = await this.request('set', body);
-		return response?.preset?.preset === true;
+
+		console.log('Set preset response:', response);
+		return response?.image?.preset === true;
 	}
 
 	private throwError(error: Error) {

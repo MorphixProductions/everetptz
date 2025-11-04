@@ -11,7 +11,14 @@ async function main() {
 
 	await ptz.whenReady();
 
-	await ptz.recallPreset(15);
+	// const presetRecall = await ptz.recallPreset(2);
+	// console.log('Preset recalled:', presetRecall);
+
+	// const presetSet = await ptz.setPreset(2);
+	// console.log('Preset set:', presetSet);
+
+	const presetSet = await ptz.setPreset(2);
+	console.log('Preset set:', presetSet);
 
 	// const rtsp = await ptz.getRTSPUrl();
 	// const rtmp = await ptz.getRTMPUrl();

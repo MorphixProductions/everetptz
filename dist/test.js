@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var EveretPTZ_1 = require("./EveretPTZ");
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var ptz;
+        var ptz, presetSet;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -50,9 +50,10 @@ function main() {
                     return [4 /*yield*/, ptz.whenReady()];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, ptz.recallPreset(15)];
+                    return [4 /*yield*/, ptz.setPreset(2)];
                 case 2:
-                    _a.sent();
+                    presetSet = _a.sent();
+                    console.log('Preset set:', presetSet);
                     return [2 /*return*/];
             }
         });

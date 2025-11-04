@@ -59,6 +59,15 @@ await camera.recallPreset(1); // Return to preset 1 position
 
 ## API Reference
 
+### Return Values
+
+**Important**: All `set` methods return a `Promise<boolean>`:
+
+-   `true` - Command executed successfully
+-   `false` - Command failed or something went wrong
+
+**Note**: `get` methods return the actual values, while control methods (`move`, `zoom`, `focus`) return boolean success indicators.
+
 ### Constructor
 
 ```typescript

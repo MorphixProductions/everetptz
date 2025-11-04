@@ -1031,7 +1031,7 @@ var EveretPTZ = /** @class */ (function () {
                         return [4 /*yield*/, this.request('set', body)];
                     case 1:
                         response = _b.sent();
-                        return [2 /*return*/, ((_a = response === null || response === void 0 ? void 0 : response.preset) === null || _a === void 0 ? void 0 : _a.preset) === true];
+                        return [2 /*return*/, ((_a = response === null || response === void 0 ? void 0 : response.image) === null || _a === void 0 ? void 0 : _a.preset) === true];
                 }
             });
         });
@@ -1049,7 +1049,8 @@ var EveretPTZ = /** @class */ (function () {
                         return [4 /*yield*/, this.request('set', body)];
                     case 1:
                         response = _b.sent();
-                        return [2 /*return*/, ((_a = response === null || response === void 0 ? void 0 : response.preset) === null || _a === void 0 ? void 0 : _a.preset) === true];
+                        console.log('Set preset response:', response);
+                        return [2 /*return*/, ((_a = response === null || response === void 0 ? void 0 : response.image) === null || _a === void 0 ? void 0 : _a.preset) === true];
                 }
             });
         });
