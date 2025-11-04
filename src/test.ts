@@ -2,8 +2,14 @@ import { GAIN, IRIS } from './commands';
 import { EveretPTZ } from './EveretPTZ';
 import { delay } from './utils';
 
+declare const process: any;
+const password = (process as any).argv[2];
+
+if (password == null)
+	throw new Error('Please provide the password as the first argument.');
+
 async function main() {
-	const ptz = new EveretPTZ('10.99.0.118', 'admin', 'admin');
+	const ptz = new EveretPTZ('10.99.0.118', 'admin', password);
 
 	ptz.onError((error) => {
 		console.error('Error occurred:', error.message);
@@ -11,14 +17,18 @@ async function main() {
 
 	await ptz.whenReady();
 
+	ptz.setGamma(4);
+	// const exposureMode = await ptz.getExposureMode();
+	// console.log('Current exposure mode:', exposureMode);
+
 	// const presetRecall = await ptz.recallPreset(2);
 	// console.log('Preset recalled:', presetRecall);
 
 	// const presetSet = await ptz.setPreset(2);
 	// console.log('Preset set:', presetSet);
 
-	const presetSet = await ptz.setPreset(2);
-	console.log('Preset set:', presetSet);
+	// const presetSet = await ptz.setPreset(2);
+	// console.log('Preset set:', presetSet);
 
 	// const rtsp = await ptz.getRTSPUrl();
 	// const rtmp = await ptz.getRTMPUrl();

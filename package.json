@@ -1,12 +1,17 @@
 {
     "name": "everetptz",
-    "version": "2025.11.4",
+    "version": "2025.11.5",
     "description": "Rest API wrapper for Everet PTZ cameras with 0 dependencies.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
         "test": "node ./dist/test.ts"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MorphixProductions/everetptz.git"
+    },
     "author": "Mees van der Wijk",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {}
 }

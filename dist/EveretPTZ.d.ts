@@ -58,6 +58,7 @@ export declare class EveretPTZ {
     getWebRTCUrl(type?: 'main' | 'sub'): Promise<string>;
     recallPreset(presetNumber: NumberRange<0, 127>): Promise<boolean>;
     setPreset(presetNumber: NumberRange<0, 127>): Promise<boolean>;
+    clearPreset(presetNumber: NumberRange<0, 127>): Promise<boolean>;
     private throwError;
     private _onError;
     onError(callback: (error: Error) => void): Promise<void>;

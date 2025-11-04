@@ -37,23 +37,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var EveretPTZ_1 = require("./EveretPTZ");
+var password = process.argv[2];
+if (password == null)
+    throw new Error('Please provide the password as the first argument.');
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var ptz, presetSet;
+        var ptz;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    ptz = new EveretPTZ_1.EveretPTZ('10.99.0.118', 'admin', 'admin');
+                    ptz = new EveretPTZ_1.EveretPTZ('10.99.0.118', 'admin', password);
                     ptz.onError(function (error) {
                         console.error('Error occurred:', error.message);
                     });
                     return [4 /*yield*/, ptz.whenReady()];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, ptz.setPreset(2)];
-                case 2:
-                    presetSet = _a.sent();
-                    console.log('Preset set:', presetSet);
+                    ptz.setGamma(4);
                     return [2 /*return*/];
             }
         });

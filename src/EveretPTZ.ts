@@ -511,6 +511,16 @@ export class EveretPTZ {
 		return response?.image?.preset === true;
 	}
 
+	async clearPreset(presetNumber: NumberRange<0, 127>) {
+		const body = {
+			image: { preset: { del: presetNumber } },
+		};
+		const response = await this.request('set', body);
+
+		console.log('Set preset response:', response);
+		return response?.image?.preset === true;
+	}
+
 	private throwError(error: Error) {
 		if (typeof this._onError === 'function') return this._onError(error);
 		throw error;
